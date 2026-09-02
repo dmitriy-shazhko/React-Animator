@@ -23,6 +23,7 @@ type AnimationContext = {
     changeSettings: (s: AnimationSettings) => void,
     chooseElement: (elementId: string, s: AnimationSettings, setElementSettings: SettingsSetter) => void,
     resetChosedElement: () => void,
+    resetSettings: () => void,
     subscribeAnimation: (elementId: string, handler: () => void) => void
     playAnimation: () => void
 }
@@ -34,6 +35,7 @@ const defaultValue = {
     changeSettings: () => null,
     chooseElement: () => null,
     resetChosedElement: () => null,
+    resetSettings: () => null,
     subscribeAnimation: () => null,
     playAnimation: () => null
 }

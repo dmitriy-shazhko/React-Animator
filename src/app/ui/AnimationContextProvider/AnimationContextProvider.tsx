@@ -1,7 +1,7 @@
 import { AnimationContext, AnimationSettings, SettingsSetter, defaultAnimationSettings } from "app/context";
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import { getSettingsFromLS, setSettingsToLS } from "shared/api";
+import { getSettingsFromLS, resetSettingsInLS, setSettingsToLS } from "shared/api";
 
 interface IElementAnimation {
     elementId: string,
@@ -50,6 +50,11 @@ export const AnimationContextProvider:FC<PropsWithChildren> = ({children}) => {
         setSettings(defaultAnimationSettings);
     }
 
+    const resetSettings = () => {
+        setSettings(defaultAnimationSettings);
+        resetSettingsInLS(elementAnimation.elementId);
+    }
+
     const subscribeAnimation = (elementId: string, handler: () => void) => {
         setAnimationSubscribers((state) => {
             return {...state, [elementId]: handler}
@@ -67,6 +72,7 @@ export const AnimationContextProvider:FC<PropsWithChildren> = ({children}) => {
         settings, 
         chooseElement,
         resetChosedElement,
+        resetSettings,
         subscribeAnimation,
         playAnimation
     }

@@ -1,30 +1,73 @@
-# React + TypeScript + Vite
+# React Animator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение позволяет выбирать элементы на странице, настраивать для них CSS-анимации, просматривать результат и сохранять настройки между перезагрузками страницы.
 
-Currently, two official plugins are available:
+## 📸 Скриншот
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Интерфейс приложения](image.png)
 
-## Expanding the ESLint configuration
+## 📋 О проекте
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Задача заключалась в создании React-приложения по предоставленному дизайн-макету.
 
-- Configure the top-level `parserOptions` property like this:
+Основной сценарий работы пользователя:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. Выбрать элемент в рабочей области.
+2. Настроить параметры его анимации в правой панели.
+3. Выбрать подходящий вариант `easing`.
+4. Запустить Preview и посмотреть результат.
+5. Перезагрузить страницу и продолжить работу с сохранёнными настройками.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+При реализации основное внимание уделялось соответствию предоставленному дизайну, удобству взаимодействия и разделению приложения на переиспользуемые React-компоненты.
+
+## ✨ Реализованный функционал
+
+### Выбор элементов
+
+Пользователь может выбрать любой доступный элемент в рабочей области.
+
+Выбранный элемент визуально выделяется, а его текущие параметры анимации отображаются в правой панели настроек.
+
+### Настройка анимации
+
+Для каждого выбранного элемента доступны следующие параметры:
+
+| Параметр    | Описание                         |
+| ----------- | -------------------------------- |
+| **X**       | Смещение элемента по горизонтали |
+| **Y**       | Смещение элемента по вертикали   |
+| **Opacity** | Изменение прозрачности элемента  |
+| **Scale**   | Изменение масштаба элемента      |
+| **Blur**    | Степень размытия элемента        |
+| **Speed**   | Скорость выполнения анимации     |
+| **Delay**   | Задержка перед запуском анимации |
+| **Easing**  | Функция плавности анимации       |
+
+Все параметры можно изменять непосредственно из панели управления.
+
+### Easing
+
+Для параметра `Easing` реализован набор вариантов плавности анимации.
+
+Доступны, в частности:
+
+- `Linear`
+- `Ease`
+- `Ease In`
+- `Ease Out`
+- `Ease In Out`
+- `Step-end`
+
+### Preview
+
+Кнопка **Preview** переводит приложение в режим предварительного просмотра.
+
+В этом режиме пользователь может увидеть, как настроенные параметры влияют на анимацию элементов.
+
+После завершения просмотра можно вернуться в режим редактирования и продолжить настройку.
+
+### Сохранение настроек
+
+Настройки анимации сохраняются в `localStorage`.
+
+Для каждого элемента сохраняется его собственная конфигурация:

@@ -3,6 +3,7 @@ import styles from './AnimationSettings.module.css';
 import { classNames } from 'shared/lib';
 import { AnimationProperty } from 'features/AnimationProperty';
 import { AnimationContext } from 'app/context';
+import { ResetAnimationButton } from 'features/ResetAnimationButton';
 
 interface IAnimationSettings {
     className?: string
@@ -103,12 +104,7 @@ export const AnimationSettings:FC<IAnimationSettings> = ({className}) => {
                 <option value="linear">Linear</option>
                 <option value="step-start">Step-end</option>
             </AnimationProperty>
-            <AnimationProperty 
-                onChange={setSettingsHandler}
-                title='Replay'
-                type='checkbox' 
-                name='replay' 
-            />
+            <ResetAnimationButton />
         </aside>
     );
 }

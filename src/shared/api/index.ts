@@ -1,1 +1,1 @@
-export {setSettingsToLS, getSettingsFromLS} from './localStorage.api';
+export {setSettingsToLS, getSettingsFromLS, resetSettingsInLS} from './localStorage.api';

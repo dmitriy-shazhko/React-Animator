@@ -10,3 +10,7 @@ export const getSettingsFromLS = (elementId: string) => {
 export const setSettingsToLS = (elementId: string, settings: AnimationSettings) => {
     localStorage.setItem(elementId, JSON.stringify(settings))
 }
+
+export const resetSettingsInLS = (elementId: string) => {
+    localStorage.removeItem(elementId);
+}
